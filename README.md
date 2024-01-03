@@ -2,6 +2,13 @@
 
 Use this repository to quickly set up a local-serving RWKV model as an HTTP server. Minimal dependencies.
 
+0. Make sure to clone this repo first:
+
+```commandline
+git clone --recursive https://github.com/aznrogerazn/rwkv.cpp.git
+cd rwkv.cpp
+```
+
 1. First, please follow the steps in the original README below. It involves building the dependencies for the shared library. Usually you can do this via:
 
 ```commandline
