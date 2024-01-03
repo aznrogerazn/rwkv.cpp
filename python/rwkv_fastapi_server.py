@@ -72,7 +72,7 @@ app = FastAPI()
 def completion(request: CompletionRequest) -> CompletionResponse:
     try:
         start: float = time.time()
-        content = generate_completion(
+        res = generate_completion(
             prompt=request.prompt,
             max_len_tokens=request.n_predict,
             temperature=request.temperature,
@@ -89,9 +89,8 @@ def completion(request: CompletionRequest) -> CompletionResponse:
         )
 
         r = CompletionResponse(
-            content=content,
+            content=res,
             prompt=request.prompt,
-            content=content,
             timing=delay,
             generation_settings=gs,
             )
