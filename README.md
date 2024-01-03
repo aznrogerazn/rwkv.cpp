@@ -1,3 +1,56 @@
+## A simple FastAPI wrapper server for rwkv.cpp
+
+Use this repository to quickly set up a local-serving RWKV model as an HTTP server. Minimal dependencies.
+
+1. First, please follow the steps in the original README below. It involves building the dependencies for the shared library. Usually you can do this via:
+
+```commandline
+cmake .
+cmake --build . --config Release
+```
+
+2. Next, obtain a trained model weight. Use Q5_1 quantisation of Version 5 World model in 3B size for optimal performance setup. You can find more information about it below in the original README.
+
+3. Place this `.bin` model file in `models/`. If the directory doesn't exist:
+
+```commandline
+mkdir models
+```
+
+4. Initialise virtual env for this server with:
+
+```commandline
+./init-venv.sh
+```
+
+5. Enable the venv by running:
+
+```commandline
+source rwkv-cpp-server/bin/activate
+```
+
+6. Install your dependencies
+
+```commandline
+cd python
+pip3 install -r requirements.txt
+```
+
+7. Start the server with:
+
+```commandline
+uvicorn rwkv_fastapi_server:app --reload --port {your_port}
+```
+
+8. When the server is ready, use the text completion endpoint at `/completion`.
+
+```
+Please refer to python/rwkv_fastapi_server.py for Request/Response model.
+```
+
+Forked for simple server wrapping by aznrogerazn.
+License and rights below to respective authors.
+
 # rwkv.cpp
 
 This is a port of [BlinkDL/RWKV-LM](https://github.com/BlinkDL/RWKV-LM) to [ggerganov/ggml](https://github.com/ggerganov/ggml).
